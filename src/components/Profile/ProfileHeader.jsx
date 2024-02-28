@@ -5,7 +5,7 @@ const ProfileHeader = () => {
   return (
     <Flex gap={{base:4, sm:10}} py={10} direction={{base:"column", sm:"row"}}>
         <AvatarGroup 
-            size={{base:"x1", md:"2x1"}}
+            size={{base:"xl", md:"2xl"}}
             justifySelf={"center"}
             alignSelf={"center"}
             mx={"auto"}
@@ -28,25 +28,26 @@ const ProfileHeader = () => {
 
                 <Flex alignItems={"center"} gap={{base:2,sm:4}}>
                     <Text fontSize={{base:"xs",md:"sm"}}> 
-                        <Text as={span} fontWeight={"bold"} mr={1}> 
+                        <Text as="span" fontWeight={"bold"} mr={1}> 
                         4 </Text>
                         Posts
                     </Text>
                     <Text fontSize={{base:"xs",md:"sm"}}> 
-                        <Text as={span} fontWeight={"bold"} mr={1}> 
+                        <Text as="span" fontWeight={"bold"} mr={1}> 
                         149 </Text>
                         Followers
                     </Text>
                     <Text fontSize={{base:"xs",md:"sm"}}> 
-                        <Text as={span} fontWeight={"bold"} mr={1}> 
+                        <Text as="span" fontWeight={"bold"} mr={1}> 
                         175 </Text>
                         Following
                     </Text>
                     
                 </Flex>
                 <Flex alignItems={"center"} gap={4}>
-                    <Text fontSize={"sm"}> Wyatt Chase </Text>
+                    <Text fontSize={"sm"} fontWeight={"bold"}> Wyatt Chase </Text>
                 </Flex>
+                <Text fontSize={"sm"}> Musician and Programmer </Text>
         </VStack>
     </Flex>
   )
