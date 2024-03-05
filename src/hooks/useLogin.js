@@ -1,8 +1,8 @@
 import React from 'react'
 import useShowToast from './useShowToast'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/firebase';
-import { getDoc } from 'firebase/firestore';
+import { auth, firestore } from '../firebase/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import useAuthStore from '../store/authStore';
 
 const useLogin = () => {
@@ -16,7 +16,7 @@ const useLogin = () => {
 
     const loginUser = useAuthStore((state) => state.login)
 
-    const login = async() => {
+    const login = async(input) => {
         if(!input.email || !input.password){
             return showToast("Error", "Please fill in your email and password", "error")
         }
