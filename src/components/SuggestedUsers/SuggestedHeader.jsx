@@ -12,15 +12,15 @@ const SuggestedHeader = () => {
   return (
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
       <Flex alignItems={"center"} gap={2}>
-        {/* <Link to={`${authUser.username}`}> */}
+        <Link to={`${authUser.username}`}>
         <Avatar name='WyattChase' size={"lg"} src='/profilepic.png'/>
-        {/* </Link> */}
-        {/* <Link to={`${authUser.username}`}> */}
+        </Link>
+        <Link to={`${authUser.username}`}>
         <Text fontSize={12} fontWeight={"bold"}>
-          {/* {authUser.username} */}
-          WyattChase
+          {authUser.username}
+          {/* WyattChase */}
         </Text>
-        {/* </Link> */}
+        </Link>
       </Flex>
 
       <Button

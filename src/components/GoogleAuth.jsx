@@ -30,8 +30,8 @@ const GoogleAuth = ({prefix}) => {
         //sign up
         const userDoc = {
           uid: newUser.user.uid,
-          email: newUser.user.email.split(("@")[0]),
-          username: input.username,
+          email: newUser.user.email,
+          username: newUser.user.email.split("@")[0],
           fullName: newUser.user.displayName,
           bio: "",
           profilePicUrl: newUser.user.photoURL,

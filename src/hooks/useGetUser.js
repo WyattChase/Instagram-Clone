@@ -13,10 +13,10 @@ const useGetUser = (username) => {
         const getUserProfile = async () => {
             setIsLoading(true);
             try {
-                const q = query(collection(firestore, "users"), where("username", "==", username));
+                const q = query(collection(firestore, "user"), where("username", "==", username));
                 const querySnap = await getDocs(q);
 
-                if (querySnap.empty()) return setUserProfile(null);
+                if (querySnap.empty) return setUserProfile(null);
 
                 let userDoc;
                 querySnap.forEach((doc) => {
@@ -26,6 +26,8 @@ const useGetUser = (username) => {
                 setUserProfile(userDoc);
             } catch (e) {
                 showToast("Error", e.message, "error");
+            }finally {
+                setIsLoading(false);
             }
         };
         getUserProfile();
