@@ -25,7 +25,7 @@ const EditProfile = ({ isOpen, onClose }) => {
 	const [input, setInput] = useState({
 		fullName: "",
 		username: "",
-		bio: "",
+		bio: ""
 	});
 	const authUser = useAuthStore((state) => state.user);
 	const fileRef = useRef(null);
@@ -62,7 +62,7 @@ const EditProfile = ({ isOpen, onClose }) => {
 										<Center>
 											<Avatar
 												size='xl'
-												src={selectedFile || authUser.profilePicURL}
+												src={selectedFile || authUser.profilePicUrl}
 												border={"2px solid white "}
 											/>
 										</Center>

@@ -26,7 +26,8 @@ const useGetUser = (username) => {
                 setUserProfile(userDoc);
             } catch (e) {
                 showToast("Error", e.message, "error");
-            }finally {
+            }
+            finally {
                 setIsLoading(false);
             }
         };

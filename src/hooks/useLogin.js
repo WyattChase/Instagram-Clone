@@ -24,7 +24,7 @@ const useLogin = () => {
 
             const userCred = await signInWithEmailAndPassword(input.email, input.password)
             if(userCred){
-                const docRef = doc(firestore, "users", userCred.user.uid);
+                const docRef = doc(firestore, "user", userCred.user.uid);
                 const docSnap = await getDoc(docRef);
                 localStorage.setItem("user-info", JSON.stringify(docSnap.data()));
                 loginUser(docSnap.data());

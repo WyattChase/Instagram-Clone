@@ -7,7 +7,7 @@ import EditProfile from './EditProfile';
 const ProfileHeader = () => {
     const { userProfile } = userProfileStore();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const authUser = useAuthStore(state => state.user);
+    const authUser = useAuthStore((state) => state.user);
     const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
     const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
