@@ -1,10 +1,10 @@
 import { Box, Flex, Spinner } from '@chakra-ui/react'
 import React from 'react'
-import Sidebar from '../components/Sidebar'
 import { useLocation } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../firebase/firebase'
 import Navbar from '../components/Navbar/Navbar'
+import Sidebar from '../components/Sidebar/Sidebar'
 
 //instead of adding the Sidebar compnent to every page, we add it this way only once to the PageLayout component
 //and wrap the children with it. This way, we can have a sidebar or every page except the AuthPage
