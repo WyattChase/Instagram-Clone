@@ -14,6 +14,7 @@ const useFollowUser = (userId) => {
     const { userProfile, setUserProfile } = userProfileStore();
     const showToast = useShowToast();
 
+    
     const handleFollowUser = async () => {
         setIsLoading(true);
         try {
@@ -33,11 +34,12 @@ const useFollowUser = (userId) => {
                     ...authUser,
                     following: authUser.following.filter((uid) => uid !== userId)
                 });
-                setUserProfile({
-                    ...authUser,
-                    followers: userProfile.followers.filter((uid) => uid !== authUser.uid),
+                if (userProfile)
+                    setUserProfile({
+                        ...userProfile,
+                        followers: userProfile.followers.filter((uid) => uid !== authUser.uid),
                 })
-
+                
                 localStorage.setItem("user-info",
                 JSON.stringify({
                     ...authUser,
@@ -51,8 +53,10 @@ const useFollowUser = (userId) => {
                     ...authUser,
                     following: [...authUser.following, userId]
                 });
-                setUserProfile({
-                    ...userProfile,
+
+                if (userProfile)
+                    setUserProfile({
+                        ...userProfile,
                     followers: [...userProfile.followers, authUser.uid]
                 })
 
@@ -66,6 +70,7 @@ const useFollowUser = (userId) => {
             }
         } catch (error) {
             showToast("Error", error.message, "error");
+            console.log(error);
         } finally {
             setIsLoading(false);
         }

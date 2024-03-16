@@ -2,23 +2,30 @@ import { Box, Flex, Link, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import SuggestedHeader from './SuggestedHeader'
 import SuggestedUser from './SuggestedUser'
+import useGetSuggested from '../../hooks/useGetSuggested'
 
 const SuggestedUsers = () => {
+  const { isLoading, suggestedUsers } = useGetSuggested();
+  //render loading skeleton
+  if (isLoading) return null;
   return (
     <VStack py={8} px={6} gap={4}>
         <SuggestedHeader/>
         
-        <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
-        <Text fontSize={12} fontWeight={"bold"} color={"gray.500"}>
-          Suggested for you
-        </Text>
-        <Text fontSize={12} fontWeight={"bold"} _hover={"gray.400"} cursor={"pointer"}>
-          See all
-        </Text>
-        </Flex>
-        <SuggestedUser name="Dan Abrahmov" followers={1392} avatar='https://bit.ly/dan-abramov'/>
-        <SuggestedUser name="Ryan Florence" followers={567} avatar='https://bit.ly/ryan-florence'/>
-        <SuggestedUser name="Christian Nwamba" followers={759} avatar='https://bit.ly/code-beast'/>
+       {suggestedUsers.length !== 0 && (
+         <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
+         <Text fontSize={12} fontWeight={"bold"} color={"gray.500"}>
+           Suggested for you
+         </Text>
+         <Text fontSize={12} fontWeight={"bold"} _hover={"gray.400"} cursor={"pointer"}>
+           See all
+         </Text>
+         </Flex>
+       )}
+
+        {suggestedUsers.map(user => (
+          <SuggestedUser user={user} key={user.id}/>
+        ))}
 
         <Box fontSize={12} color={"gray.500"} mt={5} alignSelf={"start"}>
           @ 2024 Built By{" "}
