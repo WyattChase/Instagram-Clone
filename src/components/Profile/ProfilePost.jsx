@@ -12,6 +12,7 @@ import { deleteObject, ref } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/firebase';
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import Comment from '../Comment/Comment';
+import Caption from '../Comment/Captions';
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -133,8 +134,10 @@ const ProfilePost = ({ post }) => {
               <Divider my={4} bg={"gray.500"}/>
 
               <VStack w={"full"} alignItems={"start"} maxH={"350px"} overflowY={"auto"}>
+                {/* Caption */}
+                {post.caption && <Caption post={post} />}
+                {/* Comments */}
                 {post.comments.map((comment,idx) => (
-                  console.log(comment),
                   <Comment key={idx} comment={comment} />
                 ))}
               </VStack>

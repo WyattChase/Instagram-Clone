@@ -7,13 +7,14 @@ const useGetProfileById = (userId) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ userProfile, setUserProfile ] = useState(null);
     const showToast = useShowToast();
-
+    
     useEffect(() => {
         const getUserProfile = async () => {
             setIsLoading(true);
             setUserProfile(null);
             try {
                 const userRef = await getDoc(doc(firestore, "user", userId));
+                console.log(userRef)
                 if(userRef.exists()) {
                     setUserProfile(userRef.data());
                 }

@@ -1,14 +1,17 @@
 import { Avatar, Box, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
+import { timeAgo } from '../../utils/timeAgo'
 
-const PostHeader = ({username, avatar}) => {
+const PostHeader = ({post, creatorProfile}) => {
+    console.log(creatorProfile)
+
   return (
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"} my={2}>
         <Flex alignItems={"center"} gap={2}>
-            <Avatar src={avatar} alt='user profile picture' size={"sm"}/>
+            <Avatar src={creatorProfile && creatorProfile.profilePicUrl} alt='user profile picture' size={"sm"}/>
             <Flex fontSize={12} fontWeight={"bold"} gap={2}>
-                {username}
-                <Box color={"gray.500"}>• 1w</Box>
+            {creatorProfile && creatorProfile.username}
+                <Box color={"gray.500"}>• {timeAgo(post.createdAt)}</Box>
             </Flex>
         </Flex>
         <Box cursor={"pointer"}>

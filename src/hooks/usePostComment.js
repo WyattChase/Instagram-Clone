@@ -6,15 +6,15 @@ import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 
 const usePostComment = () => {
-    const [ isLoading, setIsLoading ] = useState();
+    const [ isCommenting, setIsCommenting ] = useState();
     const showToast = useShowToast();
     const authUser = useAuthStore((state) => state.user);
     const addComment = usePostStore((state) => state.addComment);
 
     const handlePostComment = async (postId, comment) => {
-        if (isLoading) return;
+        if (isCommenting) return;
         if (!authUser) return showToast("Error", "You must be logged in to comment", "error");
-        setIsLoading(true);
+        setIsCommenting(true);
         const newComment = {
             comment,
             createdAt: Date.now(),
@@ -30,10 +30,10 @@ const usePostComment = () => {
         } catch (error) {
             showToast("Error", error.message, "error")
         } finally {
-            setIsLoading(false);
+            setIsCommenting(false);
         }
     }
-    return { isLoading, handlePostComment};
+    return { isCommenting, handlePostComment};
 }
 
 export default usePostComment
