@@ -29,8 +29,8 @@ const PostHeader = ({post, creatorProfile}) => {
 				</Flex>
         </Flex>
         <Box cursor={"pointer"}>
-            <Button fontSize={12} color={"blue.500"} fontWeight={"bold"} _hover={{color:"white"}} transition={"0.2s ease-in-out"}>
-                UnFollow
+            <Button size={"xs"} bg={"transparent"} fontSize={12} color={"blue.500"} fontWeight={"bold"} _hover={{color:"white"}} transition={"0.2s ease-in-out"} onClick={handleFollowUser} isLoading={isLoading}>
+                { isFollowing ? "UnFollow" : "Follow" }
             </Button>
         </Box>
     </Flex>

@@ -1,16 +1,19 @@
-import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useRef, useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 import usePostComment from '../../hooks/usePostComment';
 import useAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
+import { timeAgo } from '../../utils/timeAgo';
+import CommentsModal from '../Comment/CommentsModal';
 
-const PostFooter = ({ post, username, isProfilePage}) => {
+const PostFooter = ({ post, isProfilePage, creatorProfile}) => {
     const { isCommenting, handlePostComment } = usePostComment();
     const [ comment, setComment ] = useState('');
     const authUser = useAuthStore((state) => state.user);
     const commentRef = useRef(null);
     const { handleLikePost, isLiked, likes} = useLikePost(post)
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const handleSubmitComment = async () => {
         await handlePostComment(post.id, comment);
@@ -33,20 +36,31 @@ const PostFooter = ({ post, username, isProfilePage}) => {
     <Text fontWeight={600} fontSize={"sm"}>
         {likes} likes
     </Text>
+
+    {isProfilePage && (
+        <Text fontSize="12" color={"gray"}>
+            Posted {timeAgo(post.createdAt)}
+        </Text>
+    )}
+
     {!isProfilePage && (
         <>
         <Text fontWeight={700} fontSize={"sm"}>
-        {username}{" "}
+        {creatorProfile?.username}{" "}
 
         <Text as='span' fontWeight={400}>
-        Feeling Good
+        {post.caption}
         </Text>
         
         </Text>
 
-        <Text fontSize={"sm"} color={"gray"}>
-        View all 1,000 comments
-        </Text>
+        {post.comments.length > 0 && (
+            <Text fontSize={"sm"} color={"gray"} onClick={onOpen}>
+            View all {post.comments.length} comments
+            </Text>
+        )}
+        {/* Comments modal only in the Home Page */}
+        {isOpen ? <CommentsModal isOpen={isOpen} onClose={onClose} post={post}/> : null }
         </>
     )}
 
