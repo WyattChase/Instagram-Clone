@@ -4,7 +4,7 @@ import useGetFeedPosts from '../../hooks/useGetFeedPosts'
 
 const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();
-  console.log(posts)
+  
   return (
     <Container maxW={"container.sm"} py={10} px={2}>
       {isLoading && [0,1,2].map((_, idx) => (
