@@ -12,7 +12,7 @@ const FeedPost = ({post}) => {
     <>
     <PostHeader post={post} creatorProfile={userProfile}/>
     <Box my={2} borderRadius={4} overflow={"hidden"}>
-      <Image src={post.imageURL} alt={"Feed Post Image"} />
+      <Image src={post.imageURL} alt={"Feed Post Image"} w={{base:40, sm:450}} h={{base:40, sm:400}} />
     </Box>
     <PostFooter post={post} creatorProfile={userProfile}/>
     </>
