@@ -14,6 +14,7 @@ const CreatePost = () => {
   const { isLoading, handleCreatePost } = useCreatePost()
   const showToast = useShowToast()
 
+
   const handlePostCreation = async () => {
     try {
       await handleCreatePost(selectedFile, caption);

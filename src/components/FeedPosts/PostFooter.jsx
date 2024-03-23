@@ -55,7 +55,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile}) => {
         </Text>
 
         {post.comments.length > 0 && (
-            <Text fontSize={"sm"} color={"gray"} onClick={onOpen}>
+            <Text fontSize={"sm"} color={"gray"} onClick={onOpen} cursor={"pointer"}>
             View all {post.comments.length} comments
             </Text>
         )}
