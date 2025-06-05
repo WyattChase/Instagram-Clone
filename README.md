@@ -1,6 +1,6 @@
 # 📸 Instagram Clone – React & Firebase
 
-**Live Demo:** [https://instagram-clone-eight-chi.vercel.app](https://instagram-clone-eight-chi.vercel.app)
+**Live Demo:** Hosted on [Vercel](https://social-app-wyattchase.vercel.app/)
 
 This project is a full-stack Instagram clone built with React and Firebase. It replicates core functionalities of Instagram, providing users with a seamless experience to share and interact with photos.
 
