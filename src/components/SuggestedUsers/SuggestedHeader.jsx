@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom'
 const SuggestedHeader = () => {
   const {handleLogout, isLoggingOut} = useLogout()
   const authUser = useAuthStore(state => state.user)
-
+  console.log(authUser)
 
   return (
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
       <Flex alignItems={"center"} gap={2}>
         <Link to={`${authUser.username}`}>
-        <Avatar name='WyattChase' size={"lg"} src='/profilepic.png'/>
+        <Avatar name={authUser.username} size={"lg"} src={authUser.profilePicUrl}/>
         </Link>
         <Link to={`${authUser.username}`}>
         <Text fontSize={12} fontWeight={"bold"}>
